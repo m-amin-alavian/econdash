@@ -19,7 +19,7 @@ with col2:
     capital = np.arange(0, 50, 0.01)
     output = lat**(1-alpha) * capital**(alpha)
     depreciation = 0.2 * capital
-    solow_df = pd.DataFrame([capital, output, depreciation], index=["Capital per Capita `k(t)`", "Output per Capita `y(t)`", "Depreciation per Capita"]).T
-    fig = px.line(solow_df, x="Capital per Capita `k(t)`", y=["Output per Capita `y(t)`", "Depreciation"])
+    solow_df = pd.DataFrame([capital, output, depreciation], index=["Capital per Capita k(t)", "Output per Capita y(t)", "Depreciation per Capita"]).T
+    fig = px.line(solow_df, x="Capital per Capita k(t)", y=["Output per Capita y(t)", "Depreciation per Capita"])
     fig.update_yaxes(title={"text": "Output per Capita"})
     st.plotly_chart(fig)
