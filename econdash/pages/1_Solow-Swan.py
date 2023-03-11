@@ -12,7 +12,7 @@ col1, col2 = st.columns([1, 2], gap="medium")
 
 with col1:
     st.write("$$ Y(t) = K(t)^\\alpha(A(t)L(t))^{1-\\alpha} $$")
-    lat = st.slider('$ A $, Labor-Augmenting Technology', min_value=1.0, max_value=5.0, value=1.2, step=0.1)
+    lat = st.slider('$ A $, Labor-Augmenting Technology', min_value=1.0, max_value=5.0, value=4.0, step=0.1)
     alpha = st.slider(label="$ \\alpha $", min_value=0.0, max_value=1.0, value=0.3, step=0.01)
     depreciation_rate = st.slider(label='$ \\delta $', min_value=0.0, max_value=1.0, value=0.2, step=0.01)
 
