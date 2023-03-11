@@ -12,14 +12,13 @@ col1, col2 = st.columns([1, 2], gap="medium")
 
 with col1:
     st.write("$$ Y(t) = K(t)^\\alpha(A(t)L(t))^{1-\\alpha} $$")
-    lat = st.slider('"A" Labor-Augmenting Technology', min_value=1.0, max_value=5.0, value=1.2, step=0.1)
-    alpha = st.slider('"$\\alpha$"', min_value=0.0, max_value=1.0, value=0.3, step=0.01)
+    depreciation_rate = st.slider(label="'$ "\delta" $", min_value=0.0, max_value=1.0, value=0.3, step=0.01, label_visibility="collapsed")
 
 with col2:
     uniform = np.arange(0, 10, 0.05)
     capital = uniform**2
     output = lat**(1-alpha) * capital**(alpha)
-    depreciation = 0.2 * capital
+    depreciation = depreciation_rate * capital
     solow_df = pd.DataFrame([capital, output, depreciation], index=["Capital per Capita k(t)", "Output per Capita y(t)", "Depreciation per Capita"]).T
     fig = px.line(solow_df, x="Capital per Capita k(t)", y=["Output per Capita y(t)", "Depreciation per Capita"])
     fig.update_yaxes(title={"text": "Output per Capita"})
