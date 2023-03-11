@@ -16,7 +16,8 @@ with col1:
     alpha = st.slider('"$\\alpha$"', min_value=0.0, max_value=1.0, value=0.3, step=0.01)
 
 with col2:
-    capital = np.arange(0, 50, 0.01)
+    uniform = np.arange(0, 10, 0.05)
+    capital = uniform**2
     output = lat**(1-alpha) * capital**(alpha)
     depreciation = 0.2 * capital
     solow_df = pd.DataFrame([capital, output, depreciation], index=["Capital per Capita k(t)", "Output per Capita y(t)", "Depreciation per Capita"]).T
