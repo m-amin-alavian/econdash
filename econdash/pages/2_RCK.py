@@ -44,14 +44,14 @@ def reset_sliders():
 
     
 with col1:
-    st.write("$$ \dot{k} = (k ^ \\alpha + k e^{- \delta} - c ) e^{-g-n} $$")
-    st.write("$$ \dot{c} = c (\\beta  e^{-g \\theta}(\\alpha \dot {k} ^{\\alpha-1} + e^{- \\delta})) ^{1/\\theta} $$")
+    st.write("$$ \\frac{ \dot{k}}{k} = \\frac{k ^ \\alpha - c}{k} - (\\delta + g + n) $$")
+    st.write("$$ \\frac{ \dot{c}}{c} = \\frac{1}{\\sigma} (\\alpha k^{\\alpha -1} - \\delta - \\rho - \\sigma g) $$")
         
-    theta = st.slider('$ \\theta $', min_value=0.3, max_value=2.0, value=1.5, step=0.1, key="theta_slider")
+    theta = st.slider('$ \\sigma $', min_value=0.3, max_value=2.0, value=1.5, step=0.1, key="theta_slider")
     n = st.slider('$ n $', min_value=0.01, max_value=0.06, value=0.02, step=0.01, key="n_slider")
     delta = st.slider('$ \\delta $', min_value=0.0, max_value=0.1, value=0.05, step=0.01, key="delta_slider")
     alpha = st.slider('$ \\alpha $', min_value=0.1, max_value=0.6, value=0.3, step=0.1, key="alpha_slider")
-    beta = st.slider('$ \\beta $', min_value=0.7, max_value=1.0, value=0.95, step=0.05, key="beta_slider")
+    beta = st.slider('$ \\rho $', min_value=0.7, max_value=1.0, value=0.95, step=0.05, key="beta_slider")
     g = st.slider('$ g $', min_value=0.01, max_value=0.06, value=0.03, step=0.01, key="g_slider")
     st.button("RESET", on_click=reset_sliders)
 
@@ -72,6 +72,8 @@ with col2:
     fig.update_layout(width=900, height=700) 
     fig.update_layout(yaxis_range=[0, 1.3])
     fig.update_layout(xaxis_range=[0, 30])
+    fig.update_yaxes(title={"text": "c(t)"})
+    fig.update_xaxes(title={"text": "k(t)"})
     st.plotly_chart(fig)
     
 
